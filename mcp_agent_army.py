@@ -29,39 +29,39 @@ def get_model():
 # Airtable MCP server
 airtable_server = MCPServerStdio(
     'npx', ['-y', 'airtable-mcp-server'],
-    env={"AIRTABLE_API_KEY": os.getenv("AIRTABLE_API_KEY")}
+    env={"AIRTABLE_API_KEY": os.getenv("AIRTABLE_API_KEY", "")}
 )
 
 # Brave Search MCP server
 brave_server = MCPServerStdio(
     'npx', ['-y', '@modelcontextprotocol/server-brave-search'],
-    env={"BRAVE_API_KEY": os.getenv("BRAVE_API_KEY")}
+    env={"BRAVE_API_KEY": os.getenv("BRAVE_API_KEY", "")}
 )
 
 # Filesystem MCP server
 filesystem_server = MCPServerStdio(
-    'npx', ['-y', '@modelcontextprotocol/server-filesystem', os.getenv("LOCAL_FILE_DIR")]
+    'npx', ['-y', '@modelcontextprotocol/server-filesystem', os.getenv("LOCAL_FILE_DIR", "")] 
 )
 
 # GitHub MCP server
 github_server = MCPServerStdio(
     'npx', ['-y', '@modelcontextprotocol/server-github'],
-    env={"GITHUB_PERSONAL_ACCESS_TOKEN": os.getenv("GITHUB_TOKEN")}
+    env={"GITHUB_PERSONAL_ACCESS_TOKEN": os.getenv("GITHUB_TOKEN", "")}
 )
 
 # Slack MCP server
 slack_server = MCPServerStdio(
     'npx', ['-y', '@modelcontextprotocol/server-slack'],
     env={
-        "SLACK_BOT_TOKEN": os.getenv("SLACK_BOT_TOKEN"),
-        "SLACK_TEAM_ID": os.getenv("SLACK_TEAM_ID")
+        "SLACK_BOT_TOKEN": os.getenv("SLACK_BOT_TOKEN", ""),
+        "SLACK_TEAM_ID": os.getenv("SLACK_TEAM_ID", "")
     }
 )
 
 # Firecrawl MCP server
 firecrawl_server = MCPServerStdio(
     'npx', ['-y', 'firecrawl-mcp'],
-    env={"FIRECRAWL_API_KEY": os.getenv("FIRECRAWL_API_KEY")}
+    env={"FIRECRAWL_API_KEY": os.getenv("FIRECRAWL_API_KEY", "")}
 )
 
 # ========== Create subagents with their MCP servers ==========
